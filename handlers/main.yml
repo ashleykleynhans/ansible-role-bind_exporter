@@ -1,2 +1,12 @@
 ---
-# handlers file for ansible-role-bind_exporter
+
+- name: reenable bind exporter service
+  command: systemctl reenable bind_exporter.service
+
+- name: reinit bind exporter
+  command: initctl reload-configuration
+
+- name: restart bind exporter
+  service:
+    name: bind_exporter
+    state: restarted

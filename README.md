@@ -1,38 +1,41 @@
-Role Name
-=========
 
-A brief description of the role goes here.
+# Ansible Role: bind_exporter
 
-Requirements
-------------
+An Ansible role that installs Bind Exporter on Ubuntu|Debian|Redhat-based machines with systemd|Upstart|sysvinit.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Requirements
 
-Role Variables
---------------
+All required packages will be installed by this role.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## Role Variables
 
-Dependencies
-------------
+TODO
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Dependencies
 
-Example Playbook
-----------------
+- UnderGreen.prometheus-exporters-common
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Example Playbook
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: dns_servers
+  roles:
+    - role: ashleykleynhans.bind_exporter
+      bind_exporter_version: 0.3.0
+      bind_exporter_config_flags:
+        'bind.pid-file': '/run/named/named.pid'
+        'bind.stats-groups': 'server,view,tasks'
+        'bind.stats-url': 'http://localhost:8053/'
+        'bind.stats-version': 'auto'
+        'bind.timeout': '10s'
+        'web.listen-address': ':9119'
+        'web.telemetry-path': '/metrics'
+```
 
-License
--------
+## License
 
-BSD
+GPLv2
 
-Author Information
-------------------
+## Author Information
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Ashley Kleynhans

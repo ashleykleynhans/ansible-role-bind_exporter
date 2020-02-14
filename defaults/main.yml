@@ -1,2 +1,13 @@
 ---
-# defaults file for ansible-role-bind_exporter
+
+bind_exporter_version: 0.3.0
+bind_exporter_release_name: "bind_exporter-{{ bind_exporter_version }}.linux-amd64"
+
+bind_exporter_config_flags:
+  'bind.pid-file': '/run/named/named.pid'
+  'bind.stats-groups': 'server,view,tasks'
+  'bind.stats-url': 'http://localhost:8053/'
+  'bind.stats-version': 'auto'
+  'bind.timeout': '10s'
+  'web.listen-address': ':9119'
+  'web.telemetry-path': '/metrics'
