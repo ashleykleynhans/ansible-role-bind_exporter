@@ -11,6 +11,6 @@ setgid {{ prometheus_exporters_common_group }}
 script
   exec >> "{{ prometheus_exporters_common_log_dir }}/bind_exporter.log"
   exec 2>&1
-  exec {{ prometheus_exporters_common_root_dir }}/bind_exporter_current/bind_exporter {% for collector in bind_exporter_enabled_collectors %}--collector.{{ collector }} {% endfor %} {% for collector in bind_exporter_disabled_collectors %}--no-collector.{{ collector }} {% endfor %} {% for flag, flag_value in bind_exporter_config_flags.items() %}--{{ flag }}={{ flag_value }} {% endfor %}
+  exec {{ prometheus_exporters_common_root_dir }}/bind_exporter_current/bind_exporter {% for flag, flag_value in bind_exporter_config_flags.items() %}--{{ flag }}={{ flag_value }} {% endfor %}
 
 end script
