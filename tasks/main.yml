@@ -10,7 +10,7 @@
     copy: no
     src: "{{ prometheus_exporters_common_dist_dir }}/{{ bind_exporter_release_name }}.tar.gz"
     dest: "{{ prometheus_exporters_common_dist_dir }}"
-    creates: "{{ prometheus_exporters_common_dist_dir }}/{{ bind_exporter_release_name }}/node_exporter"
+    creates: "{{ prometheus_exporters_common_dist_dir }}/{{ bind_exporter_release_name }}/bind_exporter"
   register: bind_exporter_updated
   notify:
     - restart bind exporter
@@ -27,7 +27,7 @@
 - name: create symlink to the current release
   file:
     src: "{{ prometheus_exporters_common_dist_dir }}/{{ bind_exporter_release_name }}"
-    path: "{{ prometheus_exporters_common_root_dir }}/node_exporter_current"
+    path: "{{ prometheus_exporters_common_root_dir }}/bind_exporter_current"
     state: link
 
 - name: create systemd service unit
