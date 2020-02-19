@@ -1,3 +1,3 @@
 ---
 # https://github.com/prometheus-community/bind_exporter/releases/download/v0.3.0/bind_exporter-0.3.0.linux-amd64.tar.gz
-url: "{% if bind_exporter_url is not defined %}https://github.com/prometheus-community/bind_exporter/releases/download/v{{ prometheus_node_exporter_version }}/{{ prometheus_node_exporter_release_name }}.linux-amd64.tar.gz{% else %}{{ prometheus_node_exporter_url }}{% endif %}"
+url: "{% if bind_exporter_url is not defined %}https://github.com/prometheus-community/bind_exporter/releases/download/v{{ bind_exporter_version }}/{{ bind_exporter_release_name }}.linux-amd64.tar.gz{% else %}{{ bind_exporter_url }}{% endif %}"
