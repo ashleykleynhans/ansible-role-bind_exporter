@@ -1,7 +1,9 @@
 ---
 
 - name: reenable bind exporter service
-  command: systemctl reenable bind_exporter.service
+  service:
+    name: bind_exporter.service
+    state: enabled
 
 - name: reinit bind exporter
   command: initctl reload-configuration
