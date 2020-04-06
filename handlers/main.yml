@@ -1,9 +1,10 @@
 ---
 
 - name: reenable bind exporter service
-  service:
+  systemd:
     name: bind_exporter.service
     state: enabled
+  when: ansible_distribution_version >= '7'
 
 - name: reinit bind exporter
   command: initctl reload-configuration
