@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: bind-exporter
   author: Ashley Kleynhans
   description: An Ansible role that installs the Prometheus Bind Exporter Golang binary executable on Ubuntu/Debian/Redhat-based machines with systemd/Upstart/sysvinit.
   company: Personal
